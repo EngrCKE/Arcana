@@ -719,62 +719,202 @@ footer {
 
 
 /* ==========================================================
-   MOBILE
+   MOBILE — ARTWORK-FOCUSED LAYOUT
    ========================================================== */
 
 @media (max-width: 550px) {
 
-  /*
-   * Fixed backgrounds can behave poorly on
-   * some mobile browsers.
-   */
   body {
-    background-attachment:
-      scroll;
-
-    background-position:
-      center top;
+    background-attachment: scroll;
+    background-position: center top;
+    background-size: auto 100vh;
   }
 
+  /*
+   * Give the background more room around the UI.
+   */
   .shell {
-    padding:
-      22px
-      12px;
+    padding: 18px 10px 30px;
   }
 
+  /*
+   * Much more transparent glass panel.
+   * The celestial background remains clearly visible.
+   */
   .panel {
-    padding:
-      20px;
+    padding: 18px 14px;
 
     background:
       linear-gradient(
         145deg,
-        rgba(31, 25, 44, 0.92),
-        rgba(17, 14, 28, 0.96)
+        rgba(24, 19, 36, 0.58),
+        rgba(12, 10, 22, 0.68)
       );
+
+    border:
+      1px solid
+      rgba(215, 185, 121, 0.28);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    box-shadow:
+      0 18px 45px
+      rgba(0, 0, 0, 0.42);
   }
 
-  .cards {
+  /*
+   * Keep the question field readable even though
+   * the surrounding panel is transparent.
+   */
+  textarea {
+    background:
+      rgba(9, 7, 16, 0.70);
+  }
+
+
+  /* ========================================================
+     SPREAD BUTTONS
+     ======================================================== */
+
+  .spreads {
     grid-template-columns:
       repeat(
         2,
         minmax(0, 1fr)
       );
 
-    gap:
-      22px
-      12px;
+    gap: 8px;
+  }
+
+  .spread {
+    min-height: 92px;
+
+    background:
+      rgba(13, 10, 22, 0.64);
+  }
+
+
+  /* ========================================================
+     LARGE TAROT CARDS
+     ======================================================== */
+
+  .cards {
+    /*
+     * ONE card per row.
+     * Let the artwork become the centerpiece.
+     */
+    grid-template-columns: 1fr;
+
+    gap: 42px;
+
+    margin:
+      34px
+      0
+      46px;
+  }
+
+  .tarot-result-card {
+    width: 100%;
   }
 
   .tarot-card {
-    max-width: 175px;
+    /*
+     * Much larger on mobile.
+     */
+    width: min(78vw, 330px);
+
+    max-width: none;
+
+    margin:
+      0
+      auto;
+
+    aspect-ratio: 2 / 3;
   }
 
-  .tarot-name {
-    font-size: .95rem;
+  .tarot-card-face {
+    border-radius: 16px;
+
+    box-shadow:
+      0
+      20px
+      50px
+      rgba(0, 0, 0, 0.72),
+      0
+      0
+      24px
+      rgba(215, 185, 121, 0.12);
+  }
+
+  /*
+   * Preserve the COMPLETE artwork.
+   */
+  .tarot-card-face img {
+    object-fit: contain;
+  }
+
+
+  /* ========================================================
+     CARD LABELS
+     ======================================================== */
+
+  .tarot-card-info {
+    margin-top: 15px;
+
+    min-height: auto;
+
+    gap: 4px;
   }
 
   .tarot-position {
-    font-size: .6rem;
+    font-size: .68rem;
+
+    letter-spacing: .16em;
+  }
+
+  .tarot-name {
+    font-size: 1.35rem;
+
+    line-height: 1.25;
+  }
+
+  .tarot-orientation {
+    font-size: .82rem;
+  }
+
+
+  /* ========================================================
+     READING TEXT
+     ======================================================== */
+
+  .reading-block,
+  .interpretation {
+    background:
+      rgba(10, 8, 18, 0.24);
+
+    border-radius: 8px;
+
+    padding:
+      14px
+      10px;
+  }
+
+
+  /* ========================================================
+     HEADER
+     ======================================================== */
+
+  h1 {
+    font-size:
+      clamp(
+        3.3rem,
+        18vw,
+        5rem
+      );
+  }
+
+  header {
+    margin-bottom: 30px;
   }
 }
